@@ -21,4 +21,5 @@
 @property (strong,nonatomic)NSArray *placemarksArray;
 @property(nonatomic)float longtitude;
 @property(nonatomic)float latitude;
+
 @end

@@ -25,16 +25,17 @@
 -(void)remindersUpdated:(NSNotification*)notification;
 -(void)becomeActive:(NSNotification*)notification;
     
-    @property (strong, nonatomic) RMGeofencedReminderAnnotation *addedReminderAnnotation;
-    @property (strong, nonatomic) CLGeocoder *geocoger;
-    
-    @property (strong, nonatomic) NSArray *reminderAnnotations;
+@property (strong, nonatomic) RMGeofencedReminderAnnotation *addedReminderAnnotation;
+@property (strong, nonatomic) CLGeocoder *geocoger;
+@property (strong, nonatomic) NSArray *reminderAnnotations;
 
 
 @end
 
 @implementation MapViewController
 @synthesize mapView = _mapView;
+@synthesize imageView;
+@synthesize imageAnnotation;
 
 
 
@@ -66,7 +67,7 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     
- 
+    imageView.image=imageAnnotation;
     self.geocoger = [[CLGeocoder alloc] init];
     self.navigationItem.rightBarButtonItem = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
     self.mapView.userTrackingMode = MKUserTrackingModeFollow;
@@ -200,6 +201,7 @@
         {
             annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reminderAnnotationIdentifier];
             annotationView.canShowCallout = YES;
+            annotationView.enabled=YES;
         }
         else
         {
@@ -207,8 +209,10 @@
         }
         RMGeofencedReminderAnnotation *geofencedReminder = (RMGeofencedReminderAnnotation *)annotation;
         annotationView.pinColor = geofencedReminder.isFetched ? MKPinAnnotationColorGreen : MKPinAnnotationColorRed;
-        annotationView.rightCalloutAccessoryView =  geofencedReminder.isFetched ? [UIButton buttonWithType:UIButtonTypeDetailDisclosure] :
-        [UIButton buttonWithType:UIButtonTypeContactAdd];
+        annotationView.rightCalloutAccessoryView =  geofencedReminder.isFetched ? [UIButton buttonWithType:UIButtonTypeDetailDisclosure] :[UIButton buttonWithType:UIButtonTypeContactAdd];
+        [imageView setImage:[UIImage imageNamed:@"menu.png"]];
+        annotationView.leftCalloutAccessoryView=imageView;
+        annotationView.centerOffset=CGPointMake(annotationView.centerOffset.x+annotationView.image.size.width/2, annotationView.centerOffset.y- annotationView.image.size.height/2);
         annotationView.animatesDrop = !geofencedReminder.isFetched;
         
         return annotationView;
@@ -232,6 +236,8 @@
     else if ([segue.identifier isEqualToString:@"ShowReminder"])
     {
         RMShowReminderViewController *vc = segue.destinationViewController;
+        vc.detailImage=self.imageView.image;
+        vc.finalScore=[NSString stringWithString:self.score];
         MKAnnotationView *view = (MKAnnotationView *)sender;
         RMGeofencedReminderAnnotation*annotation = (RMGeofencedReminderAnnotation*)view.annotation;
         vc.reminder = annotation.reminder;

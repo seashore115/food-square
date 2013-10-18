@@ -27,6 +27,10 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSLog(@"%@", self.finalScore);
+    [_detailImageView setImage:self.detailImage];
+//    [self.view addSubview:self.detailImageView];
+    self.score.text=[NSString stringWithString:self.finalScore];
 }
 
 -(void)viewWillAppear:(BOOL)animated

@@ -156,13 +156,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1837DF4317FB54820000060E /* mapController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = mapController;
-			sourceTree = "<group>";
-		};
 		184B426417F76F7400DAEFF9 = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +196,8 @@
 		184B427917F76F7500DAEFF9 /* food－square */ = {
 			isa = PBXGroup;
 			children = (
+				2A54B5FA17FD1CD70018BC8E /* Users.plist */,
+				2A54B5FC17FD1D090018BC8E /* Global.h */,
 				18850FC2181032AE000CED97 /* DetailMainViewController.h */,
 				18850FC3181032AE000CED97 /* DetailMainViewController.m */,
 				18850FC4181032AE000CED97 /* MapItemAnnotation.h */,
@@ -215,9 +210,6 @@
 				18850FCB181032AE000CED97 /* RMReminderManager.m */,
 				18850FCC181032AE000CED97 /* RMShowReminderViewController.h */,
 				18850FCD181032AE000CED97 /* RMShowReminderViewController.m */,
-				2A54B5FC17FD1D090018BC8E /* Global.h */,
-				2A54B5FA17FD1CD70018BC8E /* Users.plist */,
-				1837DF4317FB54820000060E /* mapController */,
 				1837DF4517FB666A0000060E /* TQStarRatingView.h */,
 				1837DF4617FB666A0000060E /* TQStarRatingView.m */,
 				189661B417F7F3A400CDF955 /* AccountViewController.h */,

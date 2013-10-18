@@ -16,5 +16,8 @@ typedef void (^RMShowReminderViewControllerDeleteBlock)();
 
 @property (strong, nonatomic) EKReminder *reminder;
 @property (copy, nonatomic) RMShowReminderViewControllerDeleteBlock deleteReminderCompletion;
-
+@property(nonatomic,strong) IBOutlet UIImageView *detailImageView;
+@property(nonatomic,strong)IBOutlet UILabel *score;
+@property(nonatomic,strong)NSString *finalScore;
+@property(nonatomic,strong)UIImage *detailImage;
 @end

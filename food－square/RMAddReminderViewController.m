@@ -10,6 +10,7 @@
 #import <EventKit/EventKit.h>
 #import <EventKitUI/EventKitUI.h>
 #import "RMReminderManager.h"
+#import "MapViewController.h"
 
 
 #define kDefaultCalendarKey @"RMAddReminderViewController.DefaultCalendar"
@@ -141,9 +142,11 @@
 {
     if ([segue.identifier isEqualToString:@"saveReminder"])
     {
-        NSLog(@"%@",self.reminderTitleField.text);
-        NSString *subtitleDetail=[@"  score: " stringByAppendingString:self.scoreLabel.text];
-        self.reminderAnnotation.title = self.reminderTitleField.text.length ? [self.reminderTitleField.text stringByAppendingString: subtitleDetail] :NSLocalizedString(@"Reminder", @"New reminder default title");
+        MapViewController *mapViewController=segue.destinationViewController;
+        mapViewController.imageAnnotation= self.photoImageView.image;
+        mapViewController.score=self.scoreLabel.text;
+        NSLog(@"%@",self.scoreLabel.text);
+        self.reminderAnnotation.title = self.reminderTitleField.text.length ? self.reminderTitleField.text  :NSLocalizedString(@"Reminder", @"New reminder default title");
     }
 }
 

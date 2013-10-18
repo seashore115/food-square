@@ -17,7 +17,7 @@
 
 @property (strong, nonatomic, readonly) EKCalendar *calendar;
 
-@property (nonatomic,retain)IBOutlet UIImageView *photoImageView;
+@property (nonatomic,strong)IBOutlet UIImageView *photoImageView;
 -(IBAction)choosePhoto:(id)sender;
 
 @end

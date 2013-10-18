@@ -21,7 +21,9 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
-
+@property(strong,nonatomic)UIImageView *imageView;
+@property(nonatomic,strong)NSString *score;
+@property(strong,nonatomic)UIImage *imageAnnotation;
 
 
 
